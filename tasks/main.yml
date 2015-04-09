@@ -1,0 +1,5 @@
+---
+# tasks file for eucalyptus-clc
+
+- include: packages.yml
+- include: init.yml
