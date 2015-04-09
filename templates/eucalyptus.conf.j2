@@ -19,7 +19,6 @@ EUCA_USER="eucalyptus"
 {% if java_iface %}
 {% set vnet = 'ansible_' + java_iface %}
 CLOUD_OPTS="--bind-addr={{  hostvars[inventory_hostname][vnet]['ipv4']['address'] }} -Xms{{ xms }}G -Xmx{{ xmx }}G"
-{% endif %}
 {% else %}
 CLOUD_OPTS="-Xms{{ xms }}G -Xmx{{ xmx }}G"
 {% endif %}
