@@ -2,8 +2,11 @@
 # tasks file for eucalyptus-clc
 
 - include: packages.yml
-  when: (ansible_host_family == "Centos" and ansible_distribution_major == "6") or
-        (ansible_host_family == "RedHat" and ansible_distribution_major == "6")
+  when: (ansible_os_family == "CentOS" and ansible_distribution_major_version == "6") or
+        (ansible_os_family == "RedHat" and ansible_distribution_major_version == "6")
+  become: yes
+
 - include: init.yml
-  when: (ansible_host_family == "Centos" and ansible_distribution_major == "6") or
-        (ansible_host_family == "RedHat" and ansible_distribution_major == "6")
+  when: (ansible_os_family == "CentOS" and ansible_distribution_major_version == "6") or
+        (ansible_os_family == "RedHat" and ansible_distribution_major_version == "6")
+  become: yes

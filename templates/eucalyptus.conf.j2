@@ -1,6 +1,6 @@
-###########################################################################
+##########################################################################
 # GLOBAL CONFIGURATION
-###########################################################################
+##########################################################################
 
 # Where Eucalyptus is installed
 EUCALYPTUS="/"
@@ -17,13 +17,24 @@ EUCA_USER="eucalyptus"
 {% if xms|int < 1 %}
 {% set xms = xmx %}
 {% endif %}
+
 {% if java_iface is defined %}
 {% set vnet = 'ansible_' + java_iface %}
 {% if hostvars[inventory_hostname][vnet] and hostvars[inventory_hostname][vnet]['ipv4'] is defined %}
+
+{% if xms|int > 1 %}
 CLOUD_OPTS="--bind-addr={{  hostvars[inventory_hostname][vnet]['ipv4']['address'] }} -Xms{{ xms|int }}G -Xmx{{ xmx|int }}G"
+{% else %}
+CLOUD_OPTS="--bind-addr={{  hostvars[inventory_hostname][vnet]['ipv4']['address'] }}"
+{% endif %}
+
 {% endif %}
 {% else %}
+{% if xms|int > 1 %}
 CLOUD_OPTS="-Xms{{ xms|int }}G -Xmx{{ xmx|int }}G"
+{% else %}
+CLOUD_OPTS=""
+{% endif %}
 {% endif %}
 
 ###########################################################################
