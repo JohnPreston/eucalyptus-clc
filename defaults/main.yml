@@ -4,7 +4,6 @@
 
 # CLC Specific
 
-euca_images: eucalyptus-service-image
 clc_public_key_path: /var/tmp/clc-pub-key
 ssh_key_bits: 4096
 euca_db_path: /var/lib/eucalyptus/db/data
@@ -12,10 +11,10 @@ euca_db_path: /var/lib/eucalyptus/db/data
 
 # Eucalyptus Generic
 
-euca_repo_url: http://downloads.eucalyptus.com/software/eucalyptus/4.1/centos/6/x86_64/eucalyptus-release-4.1.el6.noarch.rpm
-euca2ools_repo_url: http://downloads.eucalyptus.com/software/euca2ools/3.2/centos/6/x86_64/euca2ools-release-3.2.el6.noarch.rpm
-epel_repo_url: http://downloads.eucalyptus.com/software/eucalyptus/4.1/centos/6/x86_64/epel-release-6.noarch.rpm
-elrepo_repo_url: http://downloads.eucalyptus.com/software/eucalyptus/4.0/centos/6/x86_64/elrepo-release-6.noarch.rpm
+euca_repo_url: http://downloads.eucalyptus.com/software/eucalyptus/4.2/centos/6/x86_64/eucalyptus-release-4.2-1.el6.noarch.rpm
+euca2ools_repo_url: http://downloads.eucalyptus.com/software/euca2ools/3.3/centos/6/x86_64/euca2ools-release-3.3-1.el6.noarch.rpm
+epel_repo_url: http://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+
 
 euca_local_repo_url:
 euca_repo_file: /etc/yum.repos.d/eucalyptus.repo

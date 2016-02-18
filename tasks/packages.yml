@@ -9,9 +9,9 @@
   - "{{ euca_repo_url }}"
   - "{{ euca2ools_repo_url }}"
   - "{{ epel_repo_url }}"
-  - "{{ elrepo_repo_url }}"
   tags:
   - packages
+  become: yes
 
 - name: Use Eucalyptus local repositories
   lineinfile: regexp=mirrorlist line="baseurl={{ euca_local_repo_url }}" dest="{{ euca_repo_file }}"
@@ -19,6 +19,7 @@
   - packages
   when:
   - euca_use_local_repo
+  become: yes
 
 - name: Use euca2ools local repositories
   lineinfile: regexp=mirrorlist line="baseurl={{ euca2ools_local_repo_url }}" dest="{{ euca2ools_repo_file }}"
@@ -26,6 +27,7 @@
   - packages
   when:
   - euca_use_local_repo
+  become: yes
 
 - name: Setup ntpd
   yum: name=ntp state=present
@@ -33,11 +35,12 @@
   - packages
   notify:
   - ntpd start
+  become: yes
 
 - name: Setup CLC packages
   yum: name="{{ item }}" state=latest
   with_items:
   - eucalyptus-cloud
-  - "{{ euca_images }}"
   tags:
   - packages
+  become: yes
